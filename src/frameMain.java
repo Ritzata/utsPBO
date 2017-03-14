@@ -57,10 +57,8 @@ public class frameMain extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
         btnsave = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
         txtID = new javax.swing.JLabel();
         txtBarang = new javax.swing.JLabel();
         txtHarga = new javax.swing.JLabel();
@@ -156,11 +154,7 @@ public class frameMain extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnsave);
-        btnsave.setBounds(520, 350, 100, 29);
-
-        btnDelete.setText("DELETE");
-        jPanel3.add(btnDelete);
-        btnDelete.setBounds(640, 350, 100, 29);
+        btnsave.setBounds(520, 350, 180, 40);
 
         btnClear.setText("CLEAR");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +163,7 @@ public class frameMain extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnClear);
-        btnClear.setBounds(760, 350, 100, 29);
+        btnClear.setBounds(760, 350, 190, 40);
 
         btnRefresh.setText("REFRESH");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -178,16 +172,7 @@ public class frameMain extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnRefresh);
-        btnRefresh.setBounds(880, 350, 100, 29);
-
-        btnEdit.setText("EDIT");
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnEdit);
-        btnEdit.setBounds(1000, 350, 90, 29);
+        btnRefresh.setBounds(1010, 350, 190, 40);
 
         txtID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtID.setText("ID barang");
@@ -386,10 +371,6 @@ public class frameMain extends javax.swing.JFrame {
         selectData();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-
-    }//GEN-LAST:event_btnEditActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -427,8 +408,6 @@ public class frameMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnsave;
     private com.toedter.calendar.JDateChooser ctanggal;
