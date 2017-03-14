@@ -58,9 +58,9 @@ public class frameMain extends javax.swing.JFrame {
         tblData = new javax.swing.JTable();
         btnsave = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         txtID = new javax.swing.JLabel();
         txtBarang = new javax.swing.JLabel();
         txtHarga = new javax.swing.JLabel();
@@ -69,8 +69,10 @@ public class frameMain extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtkasir = new javax.swing.JTextField();
         ctanggal = new com.toedter.calendar.JDateChooser();
-        jLabel5 = new javax.swing.JLabel();
-        TAhasil = new javax.swing.JTextField();
+        txttotal = new javax.swing.JTextField();
+        txtbanyak = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -88,7 +90,7 @@ public class frameMain extends javax.swing.JFrame {
         jLabel2.setBounds(390, 80, 380, 20);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1140, 120);
+        jPanel1.setBounds(0, 0, 1310, 120);
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 102));
         jPanel2.setLayout(null);
@@ -116,7 +118,7 @@ public class frameMain extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txtharga);
-        txtharga.setBounds(190, 210, 300, 26);
+        txtharga.setBounds(190, 260, 300, 26);
 
         txtdiskon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,17 +126,17 @@ public class frameMain extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txtdiskon);
-        txtdiskon.setBounds(190, 260, 300, 26);
+        txtdiskon.setBounds(190, 310, 300, 26);
 
         tblData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Tanggal", "Kasir", "id barang", "nama brg", "harga ", "diskon", "total"
+                "Tanggal", "Kasir", "id barang", "nama brg", "banyak", "harga ", "diskon", "total"
             }
         ));
         tblData.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,7 +147,7 @@ public class frameMain extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblData);
 
         jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(520, 0, 590, 320);
+        jScrollPane1.setBounds(520, 0, 770, 320);
 
         btnsave.setText("SAVE");
         btnsave.addActionListener(new java.awt.event.ActionListener() {
@@ -160,22 +162,32 @@ public class frameMain extends javax.swing.JFrame {
         jPanel3.add(btnDelete);
         btnDelete.setBounds(640, 350, 100, 29);
 
-        jButton3.setText("CLEAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnClear.setText("CLEAR");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnClearActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3);
-        jButton3.setBounds(760, 350, 100, 29);
+        jPanel3.add(btnClear);
+        btnClear.setBounds(760, 350, 100, 29);
 
-        jButton4.setText("REFRESH");
-        jPanel3.add(jButton4);
-        jButton4.setBounds(880, 350, 100, 29);
+        btnRefresh.setText("REFRESH");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnRefresh);
+        btnRefresh.setBounds(880, 350, 100, 29);
 
-        jButton5.setText("EDIT");
-        jPanel3.add(jButton5);
-        jButton5.setBounds(1000, 350, 90, 29);
+        btnEdit.setText("EDIT");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnEdit);
+        btnEdit.setBounds(1000, 350, 90, 29);
 
         txtID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtID.setText("ID barang");
@@ -190,12 +202,12 @@ public class frameMain extends javax.swing.JFrame {
         txtHarga.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtHarga.setText("Harga barang");
         jPanel3.add(txtHarga);
-        txtHarga.setBounds(30, 190, 120, 40);
+        txtHarga.setBounds(30, 260, 120, 40);
 
         txtDiskon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtDiskon.setText("Diskon %");
         jPanel3.add(txtDiskon);
-        txtDiskon.setBounds(30, 250, 120, 30);
+        txtDiskon.setBounds(30, 310, 120, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Tanggal Trans");
@@ -217,25 +229,43 @@ public class frameMain extends javax.swing.JFrame {
         jPanel3.add(ctanggal);
         ctanggal.setBounds(190, 10, 300, 26);
 
-        jLabel5.setText("TOTAL");
-        jPanel3.add(jLabel5);
-        jLabel5.setBounds(30, 330, 80, 20);
-
-        TAhasil.addActionListener(new java.awt.event.ActionListener() {
+        txttotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TAhasilActionPerformed(evt);
+                txttotalActionPerformed(evt);
             }
         });
-        jPanel3.add(TAhasil);
-        TAhasil.setBounds(190, 310, 300, 90);
+        jPanel3.add(txttotal);
+        txttotal.setBounds(190, 360, 300, 40);
+
+        txtbanyak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbanyakActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtbanyak);
+        txtbanyak.setBounds(190, 210, 300, 26);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("Banyak barang");
+        jPanel3.add(jLabel6);
+        jLabel6.setBounds(30, 210, 130, 20);
+
+        jButton1.setText("TOTAL");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
+        jButton1.setBounds(30, 370, 83, 29);
 
         jPanel2.add(jPanel3);
-        jPanel3.setBounds(10, 120, 1110, 420);
+        jPanel3.setBounds(10, 120, 1290, 420);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 130, 1140, 570);
+        jPanel2.setBounds(0, 130, 1310, 570);
 
-        setBounds(0, 0, 1156, 754);
+        setBounds(0, 0, 1333, 754);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txthargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthargaActionPerformed
@@ -249,30 +279,25 @@ public class frameMain extends javax.swing.JFrame {
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String tanggal = dateFormat.format(ctanggal.getDate());
-        int dskn = Integer.parseInt(txtdiskon.getText());
-        int harga = Integer.parseInt(txtharga.getText());
-        int hasil = harga*dskn/100;
-        int total = harga-hasil;
-        
-        TAhasil.append("Total Harga : " + total+"\n");
-        
-        if ("".equals(tanggal) || 
-                "".equals(txtkasir.getText()) ||
+       
+        if (    "".equals(txtkasir.getText()) ||
                 "".equals(txtid.getText()) || 
-                "".equals(txtnama) ||               
+                "".equals(txtnama.getText()) ||
+                "".equals(txtbanyak.getText()) ||
                 "".equals(txtharga.getText()) || 
                 "".equals(txtdiskon.getText())) {
             JOptionPane.showMessageDialog(this, "Harap Lengkapi Data", "Error", 
             JOptionPane.WARNING_MESSAGE);
         } else {
-            String SQL = "INSERT INTO t_toko (tanggal,kasir,id_barang,nama_barang,harga_barang,diskon,total) "
+            String SQL = "INSERT INTO tb_toko(tanggal,nama_kasir,id_barang,nama_barang,banyak_barang,harga_barang,diskon,total)"
             + "VALUES('" + tanggal 
                     +"','" + txtkasir.getText() 
                     +"','" + txtid.getText() 
                     +"','" + txtnama.getText() 
+                    +"','" + txtbanyak.getText()
                     +"','" + txtharga.getText()
                     +"','" + txtdiskon.getText()
-                    +"','" + TAhasil.getText()+"')";
+                    +"','" + txttotal.getText()+"')";
             int status = KoneksiDB.execute(SQL);
             if (status == 1) {
                 JOptionPane.showMessageDialog(this, "Data berhasil ditambahkan","Sukses",
@@ -303,9 +328,16 @@ public class frameMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnsaveActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        txtkasir.setText("");
+        txtid.setText("");
+        txtnama.setText("");
+        txtbanyak.setText("");
+        txtharga.setText("");
+        txtdiskon.setText("");
+        txttotal.setText("");
+        ctanggal.setCalendar(null);
+    }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtkasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkasirActionPerformed
         // TODO add your handling code here:
@@ -325,15 +357,38 @@ public class frameMain extends javax.swing.JFrame {
             txtkasir.setText(tblData.getValueAt(baris, 1).toString());
             txtid.setText(tblData.getValueAt(baris, 2).toString());            
             txtnama.setText(tblData.getValueAt(baris, 3).toString());
-            txtharga.setText(tblData.getValueAt(baris, 4).toString());
-            txtdiskon.setText(tblData.getValueAt(baris, 5).toString());
-            TAhasil.setText(tblData.getValueAt(baris, 5).toString());
+            txtbanyak.setText(tblData.getValueAt(baris, 4).toString());
+            txtharga.setText(tblData.getValueAt(baris, 5).toString());
+            txtdiskon.setText(tblData.getValueAt(baris, 6).toString());
+            txttotal.setText(tblData.getValueAt(baris, 7).toString());
         }
     }//GEN-LAST:event_tblDataMouseClicked
 
-    private void TAhasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TAhasilActionPerformed
+    private void txttotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TAhasilActionPerformed
+    }//GEN-LAST:event_txttotalActionPerformed
+
+    private void txtbanyakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbanyakActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbanyakActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int harga = Integer.parseInt(String.valueOf(txtharga.getText()));
+        int bnyk = Integer.parseInt(String.valueOf(txtbanyak.getText()));
+        int dis = Integer.parseInt(String.valueOf(txtdiskon.getText()));
+        int ttlharga = harga*bnyk;
+        int diskon = ttlharga*dis/100;
+        int total = ttlharga-diskon;
+        txttotal.setText(""+total);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        selectData();
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+
+    }//GEN-LAST:event_btnEditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -371,18 +426,18 @@ public class frameMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TAhasil;
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnsave;
     private com.toedter.calendar.JDateChooser ctanggal;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -394,11 +449,13 @@ public class frameMain extends javax.swing.JFrame {
     private javax.swing.JLabel txtDiskon;
     private javax.swing.JLabel txtHarga;
     private javax.swing.JLabel txtID;
+    private javax.swing.JTextField txtbanyak;
     private javax.swing.JTextField txtdiskon;
     private javax.swing.JTextField txtharga;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtkasir;
     private javax.swing.JTextField txtnama;
+    private javax.swing.JTextField txttotal;
     // End of variables declaration//GEN-END:variables
 
     private void setTanggal() {
@@ -409,6 +466,26 @@ public class frameMain extends javax.swing.JFrame {
     }
 
     private void selectData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String kolom[] = {"tanggal","nama_kasir","id_barang","nama_barang","banyak_barang","harga_barang","diskon","total"};
+        DefaultTableModel dtm = new DefaultTableModel(null, kolom);
+        String sql = "SELECT * FROM tb_toko";
+        ResultSet rs = KoneksiDB.executeQuery(sql);
+        try{
+            while(rs.next()){
+                String tanggal = rs.getString(1);
+                String nama_kasir = rs.getString(2);
+                String id_barang = rs.getString(3);
+                String nama_barang = rs.getString(4);
+                String banyak_barang = rs.getString(5);
+                String harga_barang = rs.getString(6);
+                String diskon = rs.getString(7);
+                String total = rs.getString(8);
+                String data[] = {tanggal,nama_kasir,id_barang,nama_barang,banyak_barang,harga_barang,diskon,total};
+                dtm.addRow(data);
+            }
+        }catch(SQLException ex){
+            java.util.logging.Logger.getLogger(frameMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tblData.setModel(dtm);
     }
 }
